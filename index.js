@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO)
     console.log(error);
 })
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 
 const app = express();
@@ -61,13 +61,13 @@ app.use('/api/post', postRouter);
 app.use('/api/comment', commentRouter)
 
 
-app.use(express.static(path.join(__dirname, '/Client/dist')));
+// app.use(express.static(path.join(__dirname, '/Client/dist')));
 
 
 
-app.get('*', (req, res) =>{
-    res.sendFile(path.join(__dirname, 'Client', 'dist', 'index.html'))
-});
+// app.get('*', (req, res) =>{
+//     res.sendFile(path.join(__dirname, 'Client', 'dist', 'index.html'))
+// });
 // error hendleing----------------------------------------
 app.use((err, req, res, next) => {
  const statusCode  = req.statusCode || 500;
