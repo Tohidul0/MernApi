@@ -35,7 +35,7 @@ app.use(express.json());
 app.use(cors(
     {
         
-        origin: ['http://localhost:5173', 'https://musical-pika-d6e345.netlify.app'],
+        origin:  'https://musical-pika-d6e345.netlify.app',
         credentials : true,
     }  
 ));
