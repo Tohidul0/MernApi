@@ -8,6 +8,7 @@ import path from 'path';
 
 
 
+
 export const createPost = async (req, res, next) =>{
   const { title, catagory, content , image } = req.body;
   console.log(req.body)

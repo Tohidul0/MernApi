@@ -2,6 +2,8 @@ import User from "../models/user.model.js";
 import  bcryptjs from 'bcryptjs'
 import {errorHendeler} from "../utils/error.js";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'
+dotenv.config();
 
 export const signUp = async (req, res, next) => {
    const {username, email, passwoard  } = req.body;
@@ -33,6 +35,7 @@ export const signUp = async (req, res, next) => {
 
 export const signIn = async (req, res, next) => {
    const { email, passwoard  } = req.body;
+   
    try{
       if(!email || !passwoard){
          return next(errorHendeler(404,'All filed are requred'))
@@ -49,7 +52,9 @@ export const signIn = async (req, res, next) => {
       // remove password from user for frontend sequrity--------------------------------
       const {passwoard : pass, ...rest} = validUser._doc;
       const token =  jwt.sign({id : validUser._id , isAdmin: validUser.isAdmin}, process.env.JWT_SECRET)
-      res.status(200).cookie('access_token', token,{httpOnly : true}).json(rest);
+       res.status(200).cookie('access_token', token,{httpOnly : true}, {sameSite: 'None'}).json(rest);
+      console.log(token)
+      
       
    }
    catch(err){
@@ -64,6 +69,7 @@ export const signIn = async (req, res, next) => {
 
 export const google = async (req, res, next) => {
    const { name, email, photoUrl  } = req.body;
+   console.log(process.env.JWT_SECRET)
    try{
 
       const validUser = await User.findOne({email});

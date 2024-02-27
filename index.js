@@ -42,6 +42,7 @@ app.use(cors(
 app.use(cookieParser());
 
 
+
 app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`)
 });
