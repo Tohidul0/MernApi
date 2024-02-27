@@ -8,7 +8,7 @@ import commentRouter from './routes/comment.route.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import path from 'path'
-const HOST = 'https://mernapi-ibxd.onrender.com';
+
 const PORT = process.env.PORT || 8080;
 
 // var cors = require("cors");
@@ -44,7 +44,7 @@ app.use(cookieParser());
 
 
 
-app.listen(PORT, HOST, ()=>{
+app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`)
 });
 
