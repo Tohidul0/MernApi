@@ -31,14 +31,10 @@ const app = express();
 app.use(express.json());
 
 
-
+//origin:  'https://musical-pika-d6e345.netlify.app',
 
 app.use(cors(
-    {
-        
-        origin:  'https://musical-pika-d6e345.netlify.app',
-        credentials : true,
-    }  
+      
 ));
 app.use(cookieParser());
 
